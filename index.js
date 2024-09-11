@@ -1,14 +1,16 @@
+const BACKEND_URL = 'https://instagram-clone-backend.tirumalareddysai2004.workers.dev';
+
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
     try {
-        const response = await fetch('https://instagram-clone-backend.tirumalareddysai2004.workers.dev/api/login', {
+        const response = await fetch(`${BACKEND_URL}/api/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password }),
-            credentials: 'include' // Add this line
+            credentials: 'include'
         });
 
         if (!response.ok) {
