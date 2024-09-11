@@ -10,12 +10,12 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             body: JSON.stringify({ username, password })
         });
 
+        const data = await response.json();
+
         if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.message}`);
+            throw new Error(data.message || `HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.json();
         document.getElementById('message').textContent = data.message;
     } catch (error) {
         console.error('Error:', error);
