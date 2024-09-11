@@ -1,0 +1,10 @@
+{
+  "name": "instagram-clone-frontend",
+  "version": "1.0.0",
+  "description": "Instagram clone frontend",
+  "scripts": {
+    "build": "echo 'No build step required'"
+  },
+  "author": "",
+  "license": "ISC"
+}
