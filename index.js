@@ -20,5 +20,8 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     } catch (error) {
         console.error('Error:', error);
         document.getElementById('message').textContent = `An error occurred: ${error.message}`;
+        if (error.details) {
+            console.error('Error details:', error.details);
+        }
     }
 });
