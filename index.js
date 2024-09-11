@@ -11,13 +11,14 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         });
 
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            const errorData = await response.json();
+            throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.message}`);
         }
 
         const data = await response.json();
         document.getElementById('message').textContent = data.message;
     } catch (error) {
         console.error('Error:', error);
-        document.getElementById('message').textContent = 'An error occurred. Please try again.';
+        document.getElementById('message').textContent = `An error occurred: ${error.message}`;
     }
 });
