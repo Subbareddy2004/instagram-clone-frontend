@@ -10,16 +10,17 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password }),
+            mode: 'no-cors',  // This sets the request mode to 'no-cors'
             credentials: 'include'
         });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+        // In 'no-cors' mode, you cannot access the response body or most headers
+        if (response.ok) {
+            // This block will not be executed as you can't read the response body
+            document.getElementById('message').textContent = 'Login successful!';
+        } else {
+            document.getElementById('message').textContent = 'Login failed!';
         }
-
-        const data = await response.json();
-        document.getElementById('message').textContent = data.message;
     } catch (error) {
         console.error('Error:', error);
         document.getElementById('message').textContent = `An error occurred: ${error.message}`;
