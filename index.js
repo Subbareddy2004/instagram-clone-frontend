@@ -4,7 +4,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const password = document.getElementById('password').value;
 
     try {
-        const response = await fetch('https://instagram-70z.pages.dev/api/login', {
+        const response = await fetch('https://instagram-clone-backend.tirumalareddysai2004.workers.dev/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
